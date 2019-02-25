@@ -1,6 +1,7 @@
 import bunyan from "bunyan";
 import XPath from "./XPath";
 import DocumentReader from "./DocumentReader";
+import ComponentFinder from "./ComponentFinder";
 
 const logger = bunyan.createLogger({ name: "component-finder" });
 
