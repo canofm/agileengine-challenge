@@ -25,12 +25,18 @@ yarn install
 yarn find <original sample> <diff sample> <element id?>
 ```
 
+NOTE: _element id_ is optional, by default it takes: "make-everything-ok-button"
+
 Example:
 
 ```bash
 yarn find samples/sample-0-origin.html samples/sample-1-evil-gemini.html
 ```
 
-NOTE: _element id_ is optional, by default it takes: "make-everything-ok-button"
-
 The output is the XPath to the element and its HTML.
+
+#### Test
+
+```bash
+yarn test
+```
