@@ -5,6 +5,8 @@ import ComponentFinder from "./ComponentFinder";
 import ChildrenSizeComparator from "./comparators/ChildrenSizeComparator";
 import TextComparator from "./comparators/TextComparator";
 import TagComparator from "./comparators/TagComparator";
+import AttrsComparator from "./comparators/AttrsComparator";
+import CssComparator from "./comparators/CssComparator";
 
 const logger = bunyan.createLogger({ name: "component-finder" });
 
@@ -17,7 +19,12 @@ const documentReader = new DocumentReader(logger);
 const componentFinder = new ComponentFinder({
   logger,
   adjuster: new ChildrenSizeComparator(),
-  comparators: [new TextComparator(0.2), new TagComparator(0.3)]
+  comparators: [
+    new TextComparator(0.2),
+    new TagComparator(0.3),
+    new AttrsComparator(0.2),
+    new CssComparator(0.1)
+  ]
 });
 const xPath = new XPath();
 
