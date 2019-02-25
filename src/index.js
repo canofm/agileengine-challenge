@@ -7,6 +7,7 @@ import TextComparator from "./comparators/TextComparator";
 import TagComparator from "./comparators/TagComparator";
 import AttrsComparator from "./comparators/AttrsComparator";
 import CssComparator from "./comparators/CssComparator";
+import ChildrenComparator from "./comparators/ChildrenComparator";
 
 const logger = bunyan.createLogger({ name: "component-finder" });
 
@@ -23,13 +24,14 @@ const componentFinder = new ComponentFinder({
     new TextComparator(0.2),
     new TagComparator(0.3),
     new AttrsComparator(0.2),
-    new CssComparator(0.1)
+    new CssComparator(0.1),
+    new ChildrenComparator(0.2)
   ]
 });
 const xPath = new XPath();
 
 documentReader
-  .getDoms(originalPath, diffPath)
+  .getDOMs(originalPath, diffPath)
   .then(([originalHtml, diffHtml]) => componentFinder.find(elementId, originalHtml, diffHtml))
   .then(element =>
     logger.info(`Component path is: ${xPath.path(element)} and its html: ${element.innerHTML}`)
