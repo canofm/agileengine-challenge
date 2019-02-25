@@ -11,7 +11,7 @@ const diffPath = process.argv[3];
 const elementId = process.argv[4] || "make-everything-ok-button";
 
 const documentReader = new DocumentReader(logger);
-const componentFinder = new ComponentFinder(logger);
+const componentFinder = new ComponentFinder({ logger });
 const xPath = new XPath();
 
 documentReader
